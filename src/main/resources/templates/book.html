@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<style>
+    *{padding:0;margin:0; box-sizing:border-box;}
+    li{list-style:none}
+    a{text-decoration:none;font-size:14px}
+    h1 {
+        display: inline-block;
+    }
+
+    nav {
+        float: right;
+    }
+    #topMenu ul li{
+        list-style: none;
+        float: left;
+        margin-right: 20px;
+        padding-top: 20px;
+    }
+
+    .main_section ul, ol, li { list-style:none; margin:0; padding:0; }
+
+    ul.menu > li { display:inline-block; width:150px; padding:5px 10px; background:#eee; border:1px solid #eee; text-align:center; position:relative; margin-right:20px; margin-top:20px;}
+    ul.menu > li:hover { background:#fff; }
+    ul.menu > li ul.submenu { display:none; position:absolute; top:30px; left:0; z-index:1;}
+    ul.menu > li:hover ul.submenu { display:block; }
+    ul.menu > li ul.submenu > li { display:inline-block; width:150px; padding:5px 10px; background:#eee; border:1px solid #eee; text-align:center; z-index:1;}
+    ul.menu > li ul.submenu > li:hover { background:#fff; }
+
+    .top_content_section {
+        position:relative; padding:10px; border:1px solid #e4e4e4; background:#efefef;
+    }
+    table.inputForm {
+        border-collapse: separate;
+        border-spacing: 0;
+        text-align: left;
+        line-height: 1.5;
+        width: 100%;
+        border-top: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+        margin : 20px 10px;
+    }
+    table.inputForm th {
+        width: 150px;
+        padding: 10px;
+        text-align: right;
+        font-weight: bold;
+        vertical-align: top;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #fff;
+        border-left: 1px solid #fff;
+        background: #eee;
+    }
+    table.inputForm td {
+        width: 350px;
+        padding: 10px;
+        vertical-align: top;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+    input {
+        width: 100%;
+        height: 25px;
+        margin: auto;
+    }
+    .detail {
+        margin-top: 50px;
+    }
+    .team {
+      float: right;
+    }
+</style>
+<body>
+<div class="body_wrapper">
+  <!--main_wrapper-->
+  <div style="width:60%; margin:0 auto; background:#fff; height:100%;">
+    <div class="sub_wrapper">
+      <!--main_section-->
+      <header>
+        <h1 style="color: #FF0000;">OK24 Comics</h1>
+        <nav id="topMenu">
+          <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">로그인</a></li>
+            <li><a href="#">회원가입</a></li>
+            <li><a href="#">고객센터</a></li>
+            <li><a href="#">제휴문의</a></li>
+            <li><a href="#">회사소개</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div class="main_section">
+        <ul class="menu">
+          <li class="menu1">
+            <a th:href="@{/home}">HOME</a>
+          </li>
+          <li class="menu2">
+            <a th:href="@{/search/{nara}(nara='대한민국')}">국내만화</a>
+            <ul class="menu2_s submenu">
+              <li><a th:href="@{/search/{nara}/{genre}(nara='대한민국', genre='순정만화')}">순정만화</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='대한민국', genre='소년만화')}">소년만화</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='대한민국', genre='성인만화')}">성인만화</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='대한민국', genre='기획도서')}">기획도서</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='대한민국', genre='만화잡지')}">만화잡지</a></li>
+            </ul>
+          </li>
+          <li class="menu3">
+            <a th:href="@{/search/{nara}(nara='일본')}">일본만화</a>
+            <ul class="menu3_s submenu">
+              <li><a th:href="@{/search/{nara}/{genre}(nara='일본', genre='순정만화')}">순정만화</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='일본', genre='소년만화')}">소년만화</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='일본', genre='성인만화')}">성인만화</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='일본', genre='기획도서')}">기획도서</a></li>
+            </ul>
+          </li>
+          <li class="menu4">
+            <a th:href="@{/search/{nara}(nara='미국')}">미국만화</a>
+            <ul class="menu4_s submenu">
+              <li><a th:href="@{/search/{nara}/{genre}(nara='미국', genre='DC 코믹스마블')}">DC 코믹스마블</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='미국', genre='코믹스리터러리')}">코믹스리터러리</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='미국', genre='그래픽노블')}">그래픽노블</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="detail">▶ 책 상세</h3>
+        <table class="inputForm">
+          <tr>
+            <th scope="row">제목</th>
+            <td><label th:text= ${book.title}></label></td>
+          </tr>
+          <tr>
+            <th scope="row">카테고리</th>
+            <td><label th:text= ${book.category}></label></td>
+          </tr>
+          <tr>
+            <th scope="row">국가</th>
+            <td><label th:text= ${book.nation}></label></td>
+          </tr>
+          <tr>
+            <th scope="row">장르</th>
+            <td><label th:text= ${book.genre}></label></td>
+          </tr>
+          <tr>
+            <th scope="row">가격</th>
+            <td><label th:text= "|${book.price}원|"></label></td>
+          </tr>
+          <tr>
+            <th scope="row">입력일</th>
+            <td><label th:text= "${book.insertDate}"></label></td>
+          </tr>
+        </table>
+        <div class="team">
+          <button style="float:left; margin-right:20px;" type="button" th:onclick="|location.href='@{/editForm/{id}(id=${book.bookId})}'|">수정</button>
+          <button style="float:left;" type="button" th:onclick="|location.href='@{/delete/{id}(id=${book.bookId})}'|">삭제</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

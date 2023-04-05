@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<style>
+    *{padding:0;margin:0; box-sizing:border-box;}
+    li{list-style:none}
+    a{text-decoration:none;font-size:14px}
+    h1 {
+        display: inline-block;
+    }
+    #topMenu {
+        float:right;
+    }
+    #topMenu ul li{
+        list-style: none;
+        float: left;
+        margin-right: 20px;
+        padding-top: 20px;
+    }
+
+    .main_section ul, ol, li { list-style:none; margin:0; padding:0; }
+
+    ul.menu > li { display:inline-block; width:150px; padding:5px 10px; background:#eee; border:1px solid #eee; text-align:center; position:relative; margin-right:20px; margin-top:20px;}
+    ul.menu > li:hover { background:#fff; }
+    ul.menu > li ul.submenu { display:none; position:absolute; top:30px; left:0; z-index:1;}
+    ul.menu > li:hover ul.submenu { display:block; }
+    ul.menu > li ul.submenu > li { display:inline-block; width:150px; padding:5px 10px; background:#eee; border:1px solid #eee; text-align:center; z-index:1;}
+    ul.menu > li ul.submenu > li:hover { background:#fff; }
+
+    .top_content_section {
+        position:relative; padding:10px; border:1px solid #e4e4e4; background:#efefef;
+    }
+    .searchBtn {
+        margin-top: 40px;
+        float: left;
+    }
+    .list {
+        margin-top: 20px;
+    }
+    .slides li{
+        float: left;
+    }
+    .box {
+        height: 250px;
+        width: 100%;
+        background-color:#898c98;
+    }
+
+    .controller span{
+        position:absolute;
+        background-color: transparent;
+        color: black;
+        text-align: center;
+        border-radius: 50%;
+        padding: 10px 20px;
+        top: 50%;
+        font-size: 1.3em;
+        cursor: pointer;
+    }
+    .detail {
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+    .team {
+        float: right;
+    }
+    .select {
+        margin-right: 10px;
+        margin-top: 40px;
+        float: left;
+    }
+</style>
+<body>
+<!--body_wrapper-->
+<div class="body_wrapper">
+  <!--main_wrapper-->
+  <div style="width:60%; margin:0 auto; background:#fff; height:100%;">
+    <div class="sub_wrapper">
+      <!--main_section-->
+      <header>
+        <h1 style="color: #FF0000;">OK24 Comics</h1>
+        <nav id="topMenu">
+          <ul>
+            <li><a th:href="@{/home}">HOME</a></li>
+            <li><a href="#">로그인</a></li>
+            <li><a href="#">회원가입</a></li>
+            <li><a href="#">고객센터</a></li>
+            <li><a href="#">제휴문의</a></li>
+            <li><a href="#">회사소개</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div class="main_section">
+        <ul class="menu">
+          <li class="menu1">
+            <a th:href="@{/home}">HOME</a>
+          </li>
+          <li class="menu2">
+            <a th:href="@{/search/{nara}(nara='대한민국')}">국내만화</a>
+            <ul class="menu2_s submenu">
+              <li><a th:href="@{/search/{nara}/{genre}(nara='대한민국', genre='순정만화')}">순정만화</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='대한민국', genre='소년만화')}">소년만화</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='대한민국', genre='성인만화')}">성인만화</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='대한민국', genre='기획도서')}">기획도서</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='대한민국', genre='만화잡지')}">만화잡지</a></li>
+            </ul>
+          </li>
+          <li class="menu3">
+            <a th:href="@{/search/{nara}(nara='일본')}">일본만화</a>
+            <ul class="menu3_s submenu">
+              <li><a th:href="@{/search/{nara}/{genre}(nara='일본', genre='순정만화')}">순정만화</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='일본', genre='소년만화')}">소년만화</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='일본', genre='성인만화')}">성인만화</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='일본', genre='기획도서')}">기획도서</a></li>
+            </ul>
+          </li>
+          <li class="menu4">
+            <a th:href="@{/search/{nara}(nara='미국')}">미국만화</a>
+            <ul class="menu4_s submenu">
+              <li><a th:href="@{/search/{nara}/{genre}(nara='미국', genre='DC 코믹스마블')}">DC 코믹스마블</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='미국', genre='코믹스리터러리')}">코믹스리터러리</a></li>
+              <li><a th:href="@{/search/{nara}/{genre}(nara='미국', genre='그래픽노블')}">그래픽노블</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="team">
+        <form th:action="@{/search/{nara}/{genre}(nara=${nara}, genre=${genre})}" method="get">
+          <div class="select">
+            <select name="classification">
+              <option value="제목" selected="selected">제목</option>
+              <option value="카테고리">카테고리</option>
+              <option value="가격">가격</option>
+            </select>
+          </div>
+          <div class="searchBtn">
+              <input type="text" name="keyword" placeholder="검색어 입력">
+              <input type="submit" value="검색">
+              <button type="button" th:onclick="|location.href='@{/addForm}'|">생성</button>
+          </div>
+        </form>
+      </div>
+      <div class="list">
+        <h3 class="detail"><div th:text="|▶ ${category}|"></div></h3>
+        <div class="bookInfo">
+          <table class="table table-hover">
+            <thead class="thead-dark">
+            <tr class="bg-primary">
+              <th>제목</th>
+              <th>카테고리</th>
+              <th>가격</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${books}">
+              <td><a th:href="@{/home/{id}(id=${book.bookId})}" th:text="${book.title}"></a></td>
+              <td th:text="${book.category}"></td>
+              <td th:text="|${book.price}원|"></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/bootstrap.js"></script>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="/js/book.js"></script>
+</body>
+</html>
