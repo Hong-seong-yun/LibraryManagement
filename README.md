@@ -1,1 +1,2 @@
-# LibraryManagement
+## 프로젝트 소개
+시공사(sigongsa)사이트를 참고하여 만든 도서관리 프로그램입니다.
